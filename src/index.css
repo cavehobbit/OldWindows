@@ -7,9 +7,8 @@
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: #F8F9FC;
+  background: #1a1a2e;
   user-select: none;
-
 }
 
 .desktop {
@@ -17,16 +16,17 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   overflow: hidden;
 }
+
 .desktop-content {
   flex: 1;
   position: relative;
   overflow: hidden;
 }
 
-.desktop-icons {
+.desktop-icon {
   position: absolute;
   width: 80px;
   display: flex;
@@ -38,41 +38,52 @@ body {
   user-select: none;
 }
 
-.desktop-icon:hover .icon-image {
-  background: rgba(255. 255, 255, 0.5);
+@keyframes windowsOpen {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-.desktop-icon.selected .icon-label {
-  background: #000080;
-  color: #ffff55;
+.desktop-icon.opening .icon-image {
+  animation: windowsOpen 0.1s ease-in-out;
 }
+
 .icon-image {
   width: 64px;
   height: 64px;
-  background: rgba(255, 255, 255, 0.3);
+  background: #c0c0c0;
   border: 1px solid rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 48px;
-  transition: all 0.2s;
+  border-radius: 4px;
 }
+
 .icon-image img {
   width: 64px;
   height: 64px;
   object-fit: contain;
 }
+
 .icon-label {
   font-size: 11px;
   text-align: center;
-  color: #000;
+  color: #fff;
   font-weight: 500;
   word-wrap: break-word;
   max-width: 80px;
-  transition: all 0.2s;
   padding: 2px 4px;
   border-radius: 2px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
+
 .window {
   position: absolute;
   background: #C0C0C0;
@@ -86,6 +97,9 @@ body {
   max-width: 90vw;
   max-height: 90vh;
 }
+
+/*spacefolders*/
+
 .window-title {
   background: linear-gradient(to right, #000080, #1084d7);
   color: white;
@@ -100,14 +114,17 @@ body {
   user-select: none;
   padding: 2px 4px;
 }
-.window-title-teeeeeext {
+
+.window-title-text {
   flex: 1;
   padding: 2px 4px;
 }
+
 .window-buttons {
   display: flex;
   gap: 2px;
 }
+
 .window-btn {
   width: 16px;
   height: 14px;
@@ -122,11 +139,12 @@ body {
   font-weight: bold;
   color: black;
   padding: 0;
-
 }
+
 .window-btn:active {
   border-color: #404040 #dfdfdf #dfdfdf #404040;
 }
+
 .window-content {
   flex: 1;
   background: #C0C0C0;
@@ -136,6 +154,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+/*(pathspace*/
 .folder-path {
   background: #ffffff;
   border: 1px inset #dfdfdf;
@@ -147,6 +166,7 @@ body {
   border-radius: 2px;
   flex-shrink: 0;
 }
+
 .file-display {
   flex: 1;
   overflow-y: auto;
@@ -154,6 +174,7 @@ body {
   background: #ffffff;
   border: 1px inset #dfdfdf;
 }
+
 .file-text {
   font-family: 'Courier New', monospace;
   font-size: 11px;
@@ -163,11 +184,13 @@ body {
   word-wrap: break-word;
   color: #1e293b;
 }
+
 .folder-items {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
+
 .file-item {
   display: flex;
   align-items: center;
@@ -175,19 +198,20 @@ body {
   padding: 6px 8px;
   border-radius: 2px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.05s;
   user-select: none;
 }
+
 .file-item:hover {
   background: #000080;
   color: white;
-  border: 1px dotted white;
 }
 
 .file-icon {
   font-size: 16px;
   width: 20px;
 }
+
 .taskbar {
   height: 28px;
   background: linear-gradient(to bottom, #dfdfdf, #808080);
@@ -198,6 +222,7 @@ body {
   padding: 2px;
   gap: 4px;
 }
+
 .start-button {
   background: #C0C0C0;
   border: 2px solid;
@@ -211,6 +236,7 @@ body {
   gap: 4px;
   user-select: none;
 }
+
 .start-button:active {
   border-color: #404040 #dfdfdf #dfdfdf #404040;
 }
@@ -226,6 +252,7 @@ body {
   color: white;
   font-weight: bold;
 }
+
 .taskbar-apps {
   flex: 1;
   display: flex;
@@ -251,6 +278,7 @@ body {
 .taskbar-app:active {
   border-color: #404040 #dfdfdf #dfdfdf #404040;
 }
+
 .system-tray {
   display: flex;
   align-items: center;
@@ -258,6 +286,7 @@ body {
   border-left: 2px solid #808080;
   padding-left: 4px;
 }
+
 .clock {
   color: black;
   font-size: 11px;
@@ -273,12 +302,29 @@ body {
 .custom-scrollbar::-webkit-scrollbar {
   width: 12px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: #c0c0c0;
   border: 1px solid;
   border-color: #dfdfdf #404040 #404040 #dfdfdf; 
 }
-.custom-ascrollbar::-webkit-scrollbar-thumb:hover {
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #808080;
+  border: 1px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
 }
 
+@keyframes vibrate {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+  20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+input.shake {
+  animation: vibrate 0.3s;
+}
