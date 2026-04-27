@@ -1,5 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+//ONLY LOOK IF YOU HAVE TO ><
+//1 A photo dated "Summer 1998 (clue: 1998)
+//2. An IT memo mentioning "512MB RAM" (clue: 512)
+//3. A diary entry about a "56k modem" (clue: 56)
+//4. System files mentioning "Windows 1995" (clue: 1995)
+//5. 1995 + 56 + 1998 = the admin password
+
+
 import compIcon from './comp.png';
 import docsIcon from './docs.png';
 import impPaperIcon from './imppaper.png';
