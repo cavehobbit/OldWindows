@@ -841,20 +841,21 @@ export default function App() {
                               }
                             >
                               <div className="file-icon">
-                                {item.type === 'folder'
-                                  ? item.locked
-                                    ? 'LOCKED'
-                                    : 'FOLDER'
-                                  : 'FILE'}
-                              </div>
-                              <span>{item.name}</span>
-                            </div>
+                            {item.type === 'folder'
+                              ? item.locked
+                                ? '🔒'
+                                : '📁'
+                              : '📄'}
+                          </div>
+                          <span>{item.name}</span>
+                        </div>
                           )
                         )}
                       </div>
                     </div>
                   </>
                 )}
+
 
                 {win.type === 'text' && (
                   <>
