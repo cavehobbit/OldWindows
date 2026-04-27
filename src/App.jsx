@@ -1,5 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 
+//ONLY LOOK IF YOU HAVE TO >< passwords:
+
+//1. A photo dated "Summer 1998" (clue: 1998)
+//2. An IT memo mentioning "512MB RAM" (clue: 512)
+//3. A diary entry about a "56k modem" (clue: 56)
+//4. System files mentioning "Windows 1995" (clue: 1995)
+//5. 1995 + 56 + 1998 = the admin password
+// Also contains a secret file with the password: LLAMA
+// not neccessary to the admin file
+
+
 const FOLDER_STRUCTURE = {
   mycomputer: {
     name: 'My Computer',
@@ -41,13 +52,16 @@ const FOLDER_STRUCTURE = {
       }}
     }
   },
+
+  //desktop stuff
   mydocs: {
     name: 'My Documents',
     type: 'folder',
     locked: false,
     password: null,
-    items: {}
+    item: {}
   },
+
   recycle: {
     name: 'Recycle Bin',
     type: 'folder',
@@ -72,6 +86,8 @@ const FOLDER_STRUCTURE = {
       spam: { name: 'Nigeria_Prince.eml', type: 'file', content: 'FROM: unknown@unknown.com\nSUBJECT: YOU HAVE WON!!!\n\nCongratulations!\n\nYou have been selected to receive $5,000,000 from a dying Nigerian prince!\n\nSend us your bank details and we will transfer the money!\n\nFun Fact: This spam email became an ICON of the 90s internet. The "Nigerian Prince" scam is still around today, 30+ years later! It\'s one of the oldest internet scams.\n\nNobody fell for this... right?' }
     }
   },
+
+  //admin password 
   admin: {
     name: 'Admin',
     type: 'folder',
@@ -124,6 +140,9 @@ export default function App() {
       return () => clearTimeout(timer);
     }
   }, [showBootScreen]);
+
+  //sounds (tempo)
+
 
   const playSound = (type) => {
     if (!audioRef.current) return;

@@ -8,16 +8,8 @@ By searching through the Files you can find the password and also learn things f
 (memes included) :p
 Made mostly with JS
 
-I'll leave the passwords here, just incase 
+I'll leave the passwords in the JSX file, just incase 
 
 
-
-ONLY LOOK IF YOU HAVE TO ><
-
-1. A photo dated "Summer 1998" (clue: 1998)
-2. An IT memo mentioning "512MB RAM" (clue: 512)
-3. A diary entry about a "56k modem" (clue: 56)
-4. System files mentioning "Windows 1995" (clue: 1995)
-5. 1995 + 56 + 1998 = the admin password
 
 
