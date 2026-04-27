@@ -1,111 +1,329 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
+* {
   margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+body {
+  font-family: 'MS Sans Serif', 'Courier Prime', monospace;
+  background: #008080;
+  color: #000000;
+  overflow: hidden;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+html, body, #root {
+  width: 100%;
+  height: 100vh;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.desktop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #000080 0%, #1084d7 100%);
+  position: relative;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
+.desktop-content {
+  flex: 1;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80px;
+  margin-bottom: 80px;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+}
+
+.icon-image {
+  width: 48px;
+  height: 48px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.icon-label {
+  font-size: 11px;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  word-wrap: break-word;
+  width: 100%;
+  font-weight: bold;
+}
+
+.desktop-icon.selected .icon-label {
+  background: #000080;
+  color: white;
+}
+
+.window {
+  position: absolute;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  box-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #808080;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.window-title {
+  background: linear-gradient(to right, #000080, #1084d7);
+  color: white;
+  padding: 2px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 11px;
+  border-bottom: 1px solid #dfdfdf;
+  cursor: move;
+  user-select: none;
+}
+
+.window-title-text {
+  flex: 1;
+  padding: 2px 4px;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.window-btn {
+  width: 16px;
+  height: 14px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: bold;
+  color: black;
+}
+
+.window-btn:active {
+  border-color: #404040 #dfdfdf #dfdfdf #404040;
+}
+
+.window-content {
+  flex: 1;
+  background: #c0c0c0;
+  padding: 4px;
+  overflow-y: auto;
+  font-size: 11px;
+}
+
+.taskbar {
+  height: 28px;
+  background: linear-gradient(to bottom, #dfdfdf, #808080);
+  border-top: 2px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  gap: 4px;
+}
+
+.start-button {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
   padding: 4px 8px;
-  background: var(--code-bg);
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.start-button:active {
+  border-color: #404040 #dfdfdf #dfdfdf #404040;
+}
+
+.start-icon {
+  width: 16px;
+  height: 14px;
+  background: linear-gradient(135deg, #ff0000, #ffff00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.taskbar-apps {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  border-left: 2px solid #808080;
+  padding-left: 4px;
+}
+
+.taskbar-app {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  padding: 2px 4px;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskbar-app:active {
+  border-color: #404040 #dfdfdf #dfdfdf #404040;
+}
+
+.system-tray {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-left: 2px solid #808080;
+  padding-left: 4px;
+}
+
+.clock {
+  color: black;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0 6px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #404040 #dfdfdf #dfdfdf #404040;
+  padding: 2px 6px;
+}
+
+.context-menu {
+  position: fixed;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #808080;
+}
+
+.context-menu-item {
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.context-menu-item:last-child {
+  border-bottom: none;
+}
+
+.context-menu-item:hover {
+  background: #000080;
+  color: white;
+}
+
+.file-item {
+  padding: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  margin-bottom: 2px;
+  user-select: none;
+}
+
+.file-item:hover {
+  background: #000080;
+  color: white;
+  border: 1px dotted white;
+}
+
+.file-icon {
+  width: 16px;
+  height: 16px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.folder-view {
+  padding: 4px;
+}
+
+.folder-path {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+  padding: 4px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.folder-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bsod {
+  width: 100%;
+  height: 100%;
+  background: #0000aa;
+  color: #ffff55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier Prime', monospace;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.bsod-text {
+  max-width: 600px;
 }
