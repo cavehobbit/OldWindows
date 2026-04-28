@@ -8,8 +8,13 @@ By searching through the Files you can find the password and also learn things f
 (memes included) :p
 Made mostly with JS
 
-I'll leave the passwords in the JSX file, just incase 
 
+PASSWORDS:
+Finances.txt: 1998
+System32: 56512
+Music: winamp
+
+1995561998 = the secret file //last file
 
 
 
